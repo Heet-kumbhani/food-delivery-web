@@ -1,36 +1,65 @@
-# README
+# Online Food Ordering System in PHP
 
-## About this project?
+This is a full-featured web-based **Online Food Ordering System** built using **PHP**, **MySQL**, **HTML/CSS**, and **JavaScript**. It allows users to browse menus, place food orders, and for restaurants to manage those orders in real time.
 
-This project is about ordering online food from your local restaurants. Anybody can create an account and order online.
+## 📦 Features
 
-## Admin Dashboard
+### 👨‍🍳 Users
+- Register and log in securely
+- Browse restaurants and dishes
+- Add items to cart and checkout
+- View and manage orders
+- Reset password functionality
 
-http://localhost/online-food-ordering-system-in-php-master/admin/dashboard.php
+### 🧑‍💼 Admin Panel
+- Manage users and restaurants
+- Add/edit/delete dishes
+- View all orders
+- View delivery and earnings reports
 
-## User Side pannel :- 
-http://localhost/online-food-ordering-system-in-php-master/index.php
+### 🛵 Restaurant Panel
+- Accept and manage orders
+- Update order statuses
+- Track earnings
 
-## Restarunt side pannel :-
-http://localhost/online-food-ordering-system-in-php-master/restaurant/index.php
+### 🚚 Delivery Panel
+- View assigned deliveries
+- Mark orders as delivered
+
+## 🛠️ Technologies Used
+
+- **Frontend**: HTML, CSS (with SCSS), JavaScript
+- **Backend**: PHP
+- **Database**: MySQL
+- **Dependency Management**: Composer
+- **Email Services**: PHP Mailer
+
+## 📁 Project Structure
 
 
+## ⚙️ Setup Instructions
 
- **Admin credentials:** Username: **adnim@gmail.com** Password: **1234**
+1. **Clone or download** the repository.
+2. **Import the SQL database**:
+   - Locate the `.sql` file (usually in a `/db` or root folder if provided).
+   - Import it using phpMyAdmin or CLI.
+3. **Configure the Database**:
+   - Open `connection/connect.php`
+   - Update it with your MySQL credentials.
+4. **Run Locally**:
+   - Use XAMPP/WAMP and place the folder in the `htdocs` directory.
+   - Open `http://localhost/online-food-ordering-system/` in your browser.
 
+## 🔐 Login Credentials
 
-## 
+These may be default/test credentials. Update them in the database as needed.
 
-## Technologies Used
+- **Admin**: `heet@gmail.com` / `123456`
+- **User**: `amit.verma@ex.in` / `123456`
+- **Restaurant**: `SorrisoCafe@gmail.com` / `123456`
+- **Delivery**: `prince@gmail.com` / `123456`
 
-1. PHP
-2. SQL
-3. BOOTSTRAP 4
-4. AJAX
-5. JQUERY
+## 📝 License
 
-## System Requirements 
-
-Software : XAMPP / Wamp / Mamp/ Lamp \(anyone\).
-
-## Want custom PHP project?
+This project is open-source and free to use for learning and development purposes.
+---
