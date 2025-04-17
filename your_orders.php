@@ -154,7 +154,7 @@ function openRateModal(orderId) {
             <th>Status</th>
             <th>Date</th>
             <th>Action</th>
-            <th>Order Status</th>
+            <th>Order Status some message</th>
         </tr>
     </thead>
     <tbody>
