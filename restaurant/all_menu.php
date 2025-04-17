@@ -159,7 +159,7 @@ $query = mysqli_query($db, $sql);
                 </div>
             </nav>
         </div>
-
+ 
         <div class="left-sidebar">
             <div class="scroll-sidebar">
             <nav class="sidebar-nav">
@@ -180,8 +180,8 @@ $query = mysqli_query($db, $sql);
 								<li><a href="all_orderss.php">All Orders</a></li>
                             </ul>
                         </li>
-
                         </li>
+
                     </ul>
                 </nav>
             </div>

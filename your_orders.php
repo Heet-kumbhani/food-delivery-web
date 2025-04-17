@@ -99,9 +99,8 @@ $query_res = mysqli_query($db, "SELECT u_orders.o_id, u_orders.title, u_orders.q
 <body>
 <script>
 function openRateModal(orderId) {
-    // Open the modal and pass the order ID to the form
     document.getElementById('order_id').value = orderId;
-    $('#rateProductModal').modal('show'); // Assuming you are using Bootstrap's modal
+    $('#rateProductModal').modal('show');
 }
 </script>
     <header id="header" class="header-scroll top-header headrom">
@@ -212,7 +211,6 @@ function openRateModal(orderId) {
             ?>
         </tbody>
 </table>
-
                             </div>
                         </div>
                     </div>

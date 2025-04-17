@@ -20,108 +20,74 @@ session_start();
 
 <body class="fix-header fix-sidebar">
 <div id="main-wrapper">
-        <!-- Header and Sidebar code -->
-
         <div class="header">
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
-                <!-- Logo -->
                 <div class="navbar-header">
                     <a class="navbar-brand" href="dashboard.php">
-                        <!-- Logo icon -->
                         <b><img src="images/logo.png" alt="homepage" class="dark-logo" /></b>
                        </a>
                 </div>
-                <!-- End Logo -->
                 <div class="navbar-collapse">
-                    <!-- toggle and nav items -->
                     <ul class="navbar-nav mr-auto mt-md-0">
-                        <!-- This is  -->
                         <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted  " href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
                         <li class="nav-item m-l-10"> <a class="nav-link sidebartoggler hidden-sm-down text-muted  " href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
-                     
-                       
                     </ul>
-                    <!-- User profile and search -->
                     <ul class="navbar-nav my-lg-0">
-
                         <!-- Search -->
                         <!-- <li class="nav-item hidden-sm-down search-box"> <a class="nav-link hidden-sm-down text-muted  " href="javascript:void(0)"><i class="ti-search"></i></a>
                             <form class="app-search">
                                 <input type="text" class="form-control" placeholder="Search here"> <a class="srh-btn"><i class="ti-close"></i></a> </form>
-                        </li>
-                        Comment -->
+                        </li> -->                        
                         <li class="nav-item dropdown">
-                           
                             <div class="dropdown-menu dropdown-menu-right mailbox animated zoomIn">
                                 <ul>
                                     <li>
                                         <div class="drop-title">Notifications</div>
                                     </li>
-                                    
                                     <li>
                                         <a class="nav-link text-center" href="javascript:void(0);"> <strong>Check all notifications</strong> <i class="fa fa-angle-right"></i> </a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <!-- End Comment -->
-
                         <li class="nav-item">
                             <a class="nav-link text-muted" href="javascript:void(0)">
                                 <strong>Total Earnings: </strong> 
                                 <span class="badge badge-success">
                                     <?php 
-                                    // Query to calculate the total amount of all orders (price * quantity)
                                     $sql_total_price = "SELECT SUM(price * quantity) AS total_price FROM users_orders"; 
                                     $result_total_price = mysqli_query($db, $sql_total_price);
                                     $price_row = mysqli_fetch_assoc($result_total_price);
-                                    $total_price = $price_row['total_price'];
-
-                                    // Query to calculate 20% earnings (commission) of the total price
+                                    $total_price = $price_row['total_price'];                                    
                                     $total_earnings = $total_price * 0.2;
-
-                                    // Display the total earnings (20% of the total price), formatted to 2 decimal places
                                     echo number_format($total_earnings, 2); 
                                     ?> INR
                                 </span>
                             </a>
                         </li>
-
                         <li class="nav-item">
                         <a class="nav-link text-muted" href="javascript:void(0)">
                             <strong>Total cost of Restaurant and delivery (40%): </strong> 
                             <span class="badge badge-info">
                                 <?php 
-                                // Query to calculate the total amount of all orders (price * quantity)
                                 $sql_total_price = "SELECT SUM(price * quantity) AS total_price FROM users_orders"; 
                                 $result_total_price = mysqli_query($db, $sql_total_price);
                                 $price_row = mysqli_fetch_assoc($result_total_price);
                                 $total_price = $price_row['total_price'];
-
-                                // Query to calculate 20% earnings (commission) of the total price
-                                $total_earnings = $total_price * 0.4;
-
-                                // Display the total earnings (20% of the total price), formatted to 2 decimal places
-                                echo number_format($total_earnings, 2); 
-                                ?> INR
+                                $total_earnings = $total_price * 0.4; echo number_format($total_earnings, 2);  ?> INR
                             </span>
                         </a>
                     </li>
-
-
                     <li class="nav-item">
                         <a class="nav-link text-muted" href="javascript:void(0)">
                             <strong>Total Price of Orders: </strong> 
                             <span class="badge badge-info">
                                 <?php 
-                                // Display the total price of all orders, formatted to 2 decimal places
                                 echo number_format($total_price, 2); 
                                 ?> INR
                             </span>
                         </a>
                     </li>
-
-                        <!-- Profile -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/manager.png" alt="user" class="profile-pic bg-dark p-1" /></a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
@@ -134,11 +100,8 @@ session_start();
                 </div>
             </nav>
         </div>
-
         <div class="left-sidebar">
-            <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                    <ul id="sidebarnav">
                         <li class="nav-devider"></li>
@@ -146,23 +109,17 @@ session_start();
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="dashboard.php">Dashboard</a></li>
-                                
                             </ul>
                         </li>
                         <li class="nav-label">Log</li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false">  <span><i class="fa fa-user f-s-20 "></i></span><span class="hide-menu">Users</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="allusers.php">All Users</a></li>
-								<!-- <li><a href="add_users.php">Add Users</a></li> -->
-								
-                               
                             </ul>
                         </li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-archive f-s-20 color-warning"></i><span class="hide-menu">Restaurant</span></a>
                             <ul aria-expanded="false" class="collapse">
 								<li><a href="allrestraunt.php">All Restaurant</a></li>
-                                <!-- <li><a href="add_restraunt.php">Add Restaurant</a></li> -->
-                                
                             </ul>
                         </li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-archive f-s-20 color-warning"></i><span class="hide-menu">Delivery boy</span></a>
@@ -189,14 +146,10 @@ session_start();
                             <li><a href="income.php">Income</a></li>
                             </ul>
                         </li>
-                         
                     </ul>
                 </nav>
-                <!-- End Sidebar navigation -->
             </div>
-            <!-- End Sidebar scroll-->
         </div>
-
         <div class="page-wrapper">
         <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
@@ -236,24 +189,18 @@ session_start();
                                         </tfoot>
                                         <tbody>
                                             <?php
-                                            // Query to get all dishes
                                             $sql = "SELECT * FROM dishes ORDER BY d_id DESC";
                                             $query = mysqli_query($db, $sql);
                                             if (!mysqli_num_rows($query) > 0) {
                                                 echo '<td colspan="7"><center>No Dish Data!</center></td>';
                                             } else {
                                                 while ($rows = mysqli_fetch_array($query)) {
-                                                    // Get restaurant details
                                                     $mql = "SELECT * FROM restaurant WHERE rs_id='" . $rows['rs_id'] . "'";
                                                     $newquery = mysqli_query($db, $mql);
                                                     $fetch = mysqli_fetch_array($newquery);
-
-                                                    // Get the status from the database
-                                                    $status = $rows['status']; // 'active' or 'inactive'
+                                                    $status = $rows['status'];
                                                     $statusText = ($status == 'inactive') ? 'Inactive' : 'Active';
                                                     $statusClass = ($status == 'inactive') ? 'btn-danger' : 'btn-success';
-
-                                                    // Display each row in the table
                                                     echo '<tr>
                                                         <td>' . $fetch['res_name'] . '</td>
                                                         <td>' . $rows['d_name'] . '</td>

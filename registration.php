@@ -1,11 +1,10 @@
 <?php
 
-session_start(); // Temp session
-error_reporting(0); // Hide undefined index
-include("connection/connect.php"); // Connection
+session_start();
+error_reporting(0);
+include("connection/connect.php");
 
-if (isset($_POST['submit'])) { // If submit button is pressed
-    // Trim spaces from inputs
+if (isset($_POST['submit'])) {
     $username = trim($_POST['username']);
     $firstname = trim($_POST['firstname']);
     $lastname = trim($_POST['lastname']);
@@ -14,35 +13,25 @@ if (isset($_POST['submit'])) { // If submit button is pressed
     $password = trim($_POST['password']);
     $cpassword = trim($_POST['cpassword']);
     $address = trim($_POST['address']);
-    
-    // Check if any field is empty
     if (empty($firstname) || empty($lastname) || empty($email) || empty($phone) || empty($password) || empty($cpassword) || empty($address)) {
         $message = "All fields must be filled!";
     } else {
-        // Check if the username or email already exists in the database
         $check_username = mysqli_query($db, "SELECT username FROM users WHERE username = '" . mysqli_real_escape_string($db, $username) . "'");
         $check_email = mysqli_query($db, "SELECT email FROM users WHERE email = '" . mysqli_real_escape_string($db, $email) . "'");
- 
-        // Check if passwords match
+
         if ($password != $cpassword) {
             $message = "Passwords do not match!";
         } elseif (strlen($password) < 6) {
-            // Check password length
             $message = "Password must be at least 6 characters!";
         } elseif (strlen($phone) < 10) {
-            // Check phone length
             $message = "Invalid phone number!";
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            // Validate email address
             $message = "Invalid email address!";
         } elseif (mysqli_num_rows($check_email) > 0) {
-            // Check if email already exists
             $message = "Email already exists!";
         } elseif (mysqli_num_rows($check_username) > 0) {
-            // Check if username already exists
             $message = "Username already exists!";
         } else {
-            // Insert into the database
             $mql = "INSERT INTO users(username, f_name, l_name, email, phone, password, address) 
                     VALUES('" . mysqli_real_escape_string($db, $username) . "',
                            '" . mysqli_real_escape_string($db, $firstname) . "',
@@ -62,10 +51,8 @@ if (isset($_POST['submit'])) { // If submit button is pressed
                                 }
                                 i.innerHTML = parseInt(i.innerHTML) - 1;
                             }
-                            setInterval(function(){ countdown(); }, 1000);
+                            setInterval(function(){ countdown(); }, 100);
                             </script>";
-
-                // Redirect after 5 seconds
                 header("refresh:5;url=login.php");
             } else {
                 $message = "Error creating account: " . mysqli_error($db);
@@ -88,10 +75,9 @@ if (isset($_POST['submit'])) { // If submit button is pressed
     <link href="css/style.css" rel="stylesheet">
     <title>Tomato</title>
     <script>
-      // Phone number validation for multiple consecutive zeros
       function validatePhoneNumber() {
         var phone = document.getElementById('phone').value;
-        var regex = /^(?!.*00)[0-9]{10}$/; // RegEx to check for 10 digits without consecutive 0s
+        var regex = /^(?!.*00)[0-9]{10}$/;
 
         if (!regex.test(phone)) {
           alert("Phone number cannot contain consecutive zeros and must be 10 digits long.");
@@ -214,7 +200,6 @@ if (isset($_POST['submit'])) { // If submit button is pressed
                         <ul>
                             <li><a target="_blank" href="http://localhost/online-food-ordering-system-in-php-master/restaurant/">Add your restauarnat</a></li>
                             <li><a  target="_blank" href="http://localhost/online-food-ordering-system-in-php-master/delivery/index.php">delivery boy</a></li>
-                            <!-- <li><a href="#">Instagram</a></li> -->
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-3">

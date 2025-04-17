@@ -49,7 +49,7 @@ if (isset($delivery_boy_id)) {
                     <a class="navbar-brand" href="dashboard.php">
                         <b><?php echo htmlspecialchars($delivery_boy_name); ?></b>
                     </a>
-                </div>
+                </div> 
                 <div class="navbar-collapse">
                     <ul class="navbar-nav mr-auto mt-md-0">
                         <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>

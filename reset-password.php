@@ -1,53 +1,26 @@
 <?php
-
-// Check if token is provided in the URL
 if (!isset($_GET["token"])) {
     die("No token provided.");
 }
-
-// Retrieve the token from the URL
 $token = $_GET["token"];
-
-// Hash the token using SHA-256 for comparison in the database (same way as we stored it)
 $token_hash = hash("sha256", $token);
-
-// Include the database connection file
 $mysqli = require __DIR__ . "/connection/connect.php";
-
-// Prepare the SQL query to fetch the user with the given token
 $sql = "SELECT * FROM users WHERE reset_token = ?";
-
-// Prepare the statement
 $stmt = $mysqli->prepare($sql);
-
-// Bind the token to the query
 $stmt->bind_param("s", $token_hash);
-
-// Execute the query
 $stmt->execute();
-
-// Get the result of the query
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
-
-// Check if the user was found
 if ($user === null) {
     die("Token not found or is invalid.");
 }
-
-// Debugging: Check the token expiry time from the database
 $expiry_time = strtotime($user["reset_token_expires"]);
 $current_time = time();
-
-// Check if the token has expired
 if ($expiry_time <= $current_time) {
-    // Token has expired
     echo "The token has expired. Please request a new password reset.";
 } else {
     echo "The token is valid and hasn't expired.";
 }
-
-// Close the statement and the database connection
 $stmt->close();
 $mysqli->close();
 ?>
@@ -73,10 +46,8 @@ $mysqli->close();
 
         <label for="password_confirmation">Repeat password</label>
         <input type="password" id="password_confirmation"
-               name="password_confirmation">
-
+            name="password_confirmation">
         <button>Send</button>
     </form>
-
 </body>
 </html>

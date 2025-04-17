@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-// Include your database connection
 include("connection/connect.php");
 
 if (!isset($_SESSION["user_id"]) || empty($_SESSION["user_id"])) {
@@ -17,7 +15,6 @@ if (!empty($_GET["action"])) {
         case "check":
             if (!empty($_SESSION["cart_item"])) {
                 foreach ($_SESSION["cart_item"] as $item) {
-                    // Fetch the restaurant ID based on the dish ID
                     $res_query = "SELECT rs_id FROM dishes WHERE d_id = ?";
                     if ($stmtRes = $db->prepare($res_query)) {
                         $stmtRes->bind_param('i', $item["d_id"]);
@@ -26,8 +23,6 @@ if (!empty($_GET["action"])) {
                         $stmtRes->fetch();
                         $stmtRes->close();
                     }
-
-                    // Insert the order with restaurant ID
                     $checkSQL = "SELECT quantity FROM users_orders WHERE u_id = ? AND d_id = ? AND order_status = 'pending'";
 $stmtCheck = $db->prepare($checkSQL);
 $stmtCheck->bind_param('ii', $_SESSION["user_id"], $item["d_id"]);
@@ -37,7 +32,6 @@ $stmtCheck->fetch();
 $stmtCheck->close();
 
 if ($existingQty > 0) {
-    // If dish already ordered, update quantity
     $updateSQL = "UPDATE users_orders SET quantity = quantity + ?, price = price + ? WHERE u_id = ? AND d_id = ? AND order_status = 'pending'";
     $stmtUpdate = $db->prepare($updateSQL);
     $newPrice = $item["price"] * $item["quantity"];
@@ -45,7 +39,6 @@ if ($existingQty > 0) {
     $stmtUpdate->execute();
     $stmtUpdate->close();
 } else {
-    // Insert as a new order
     $insertSQL = "INSERT INTO users_orders (u_id, title, quantity, price, d_id, rs_id, date, order_status) VALUES (?, ?, ?, ?, ?, ?, NOW(), 'pending')";
     $stmtInsert = $db->prepare($insertSQL);
     $stmtInsert->bind_param('isdisi', $_SESSION["user_id"], $item["title"], $item["quantity"], $item["price"], $item["d_id"], $res_id);
@@ -89,8 +82,6 @@ if ($existingQty > 0) {
     }
 }
 ?>
-
-<!-- HTML to show success message -->
 <div class="container">
     <?php if (isset($_GET['success'])): ?>
         <span style="color: green;">
