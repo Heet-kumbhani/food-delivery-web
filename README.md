@@ -30,7 +30,7 @@ This is a full-featured web-based **Online Food Ordering System** built using **
 
 - **Frontend**: HTML, CSS (with SCSS), JavaScript
 - **Backend**: PHP
-- **Database**: MySQL
+- **Database**: MySQL (constect this email: kumbhaniheet@gmail.com)
 - **Dependency Management**: Composer
 - **Email Services**: PHP Mailer
 
