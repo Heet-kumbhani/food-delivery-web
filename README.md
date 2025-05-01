@@ -64,3 +64,6 @@ These may be default/test credentials. Update them in the database as needed.
 This project is open-source and free to use for learning and development purposes.
 ---
 If you are looking for a database, documentation, and ppt file for this project, contact this email kumbhaniheet@gmail.com.
+#collageproject
+#finalsemproject
+#fooddeliveyservice
